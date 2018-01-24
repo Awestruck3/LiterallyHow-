@@ -16,6 +16,6 @@ public class CheeseFry extends FoodItem {
     
     
     public String getFryInformation(){
-        return "Cheesefry $1.50";
+        return "Cheesefry bought for $" + getPrice();
     }
 }

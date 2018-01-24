@@ -37,7 +37,7 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lstord = new javax.swing.JList<>();
         btnadd = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -198,8 +198,8 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setText("Cash Out");
-        jButton8.setEnabled(false);
+        btnout.setText("Cash Out");
+        btnout.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,7 +215,7 @@ public class Menu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton8)
+                        .addComponent(btnout)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,7 +250,7 @@ public class Menu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton8)
+                .addComponent(btnout)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -330,7 +330,23 @@ public class Menu extends javax.swing.JFrame {
             }
         }
         else{
-            //if(cheesef && chilif)
+            if (cheesef && chilic) {
+                ChiliCheeseFry fi = new ChiliCheeseFry();
+                txtpri.setText("$" + (cur += fi.getPrice()));
+                menuItems.add((num - 1), fi.getFryInformation());
+            } else if (cheesef && chilic == false) {
+                CheeseFry fi = new CheeseFry();
+                txtpri.setText("$" + (cur += fi.getPrice()));
+                menuItems.add((num - 1), fi.getFryInformation());
+            } else if (chilic && cheesef == false) {
+                ChiliFry fi = new ChiliFry();
+                txtpri.setText("$" + (cur += fi.getPrice()));
+                menuItems.add((num - 1), fi.getFryInformation());
+            } else {
+                Fry fi = new Fry();
+                txtpri.setText("$" + (cur += fi.getPrice()));
+                menuItems.add((num - 1), fi.getFryInformation());
+            }
         }
 
         burg = false;
@@ -339,6 +355,7 @@ public class Menu extends javax.swing.JFrame {
         btnbacchebur.setEnabled(false);
         btnchebur.setEnabled(false);
         btnadd.setEnabled(false);
+        btnout.setEnabled(true);
     }//GEN-LAST:event_btnaddActionPerformed
 
     /**
@@ -384,7 +401,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton btnchefry;
     private javax.swing.JButton btnchichefry;
     private javax.swing.JButton btnfry;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton btnout;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

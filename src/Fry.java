@@ -1,11 +1,10 @@
 
-public class Burger extends FoodItem{
-    
-    public Burger(){
+public class Fry extends FoodItem {
+    public Fry(){
         super();
     }
     
-    public Burger(double p, String to){
+    public Fry(double p, String to){
         p=price;
         to=topping;
     }
@@ -15,7 +14,7 @@ public class Burger extends FoodItem{
         return price;
     }
     
-     public String getBurgerInformation(){
+     public String getFryInformation(){
         return "Burger bought for " + getPrice();
     }
 }
