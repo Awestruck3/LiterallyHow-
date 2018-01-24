@@ -15,7 +15,10 @@ public class Cheeseburg extends FoodItem {
         if(extra==false)
             return price+cheese;
         else
-            return price += (cheese*2);
-        
+            return price += (cheese*2);  
+    }
+    
+    public String getBurgerInformation(){
+        return "Cheese Burger bought for " + getPrice();
     }
 }

@@ -1,14 +1,20 @@
 
+import javax.swing.*;
+
+
 public class Menu extends javax.swing.JFrame {
 
-    int num=0;
-    boolean burg = false, fry = false, cheeseb = false, baconb = false, chilic = false, cheesef = false, canc=true;
-    double cur=0;
+    int num = 0;
+    boolean burg = false, fry = false, cheeseb = false, baconb = false, chilic = false, cheesef = false, canc = true;
+    double cur = 0;
+    DefaultListModel menuItems;
+
     public Menu() {
         initComponents();
+        lstord.setModel(new DefaultListModel());
+        menuItems = (DefaultListModel) lstord.getModel();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -29,7 +35,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtnum = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        lstord = new javax.swing.JList<>();
         btnadd = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
 
@@ -182,7 +188,7 @@ public class Menu extends javax.swing.JFrame {
         txtnum.setText("0");
         txtnum.setEnabled(false);
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(lstord);
 
         btnadd.setText("Add Item");
         btnadd.setEnabled(false);
@@ -252,13 +258,16 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnburActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnburActionPerformed
-        if(canc)
-            num+=1;
-        else num=num;
-        fry=false;
-        canc=false;
-        txtnum.setText(""+ num);
-        burg=true;
+        if (canc) {
+            num += 1;
+        } else {
+            num = num;
+        }
+        
+        fry = false; //Set fry to false incase customer changes their mind and chooses burger after hitting fry
+        canc = false;
+        txtnum.setText("" + num);
+        burg = true;
         btnchebur.setEnabled(true);
         btnbacchebur.setEnabled(true);
         btnadd.setEnabled(true);
@@ -267,13 +276,15 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnburActionPerformed
 
     private void btnfryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfryActionPerformed
-        if(canc)
-            num+=1;
-        else num=num;
-        burg=false;
-        canc=false;
-        txtnum.setText(""+ num);
-        fry=true;
+        if (canc) {
+            num += 1;
+        } else {
+            num = num;
+        }
+        burg = false;
+        canc = false;
+        txtnum.setText("" + num);
+        fry = true;
         btnchefry.setEnabled(true);
         btnchichefry.setEnabled(true);
         btnchebur.setEnabled(false);
@@ -298,37 +309,33 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnchichefryActionPerformed
 
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
-        canc=true;
-        FoodItem fi;
-        
-        
-        if(cheeseb && baconb){
-            fi=new BaconCheeseBurg();
-            //total = fi.getPrice();
-            txtpri.setText("$"+(cur+=fi.getPrice()));
+        canc = true;
+        if (burg) {
+            if (cheeseb && baconb) {
+                BaconCheeseBurg fi = new BaconCheeseBurg();
+                txtpri.setText("$" + (cur += fi.getPrice()));
+                menuItems.add((num - 1), fi.getBurgerInformation());
+            } else if (cheeseb && baconb == false) {
+                Cheeseburg fi = new Cheeseburg();
+                txtpri.setText("$" + (cur += fi.getPrice()));
+                menuItems.add((num - 1), fi.getBurgerInformation());
+            } else if (baconb && cheeseb == false) {
+                BaconBurg fi = new BaconBurg();
+                txtpri.setText("$" + (cur += fi.getPrice()));
+                menuItems.add((num - 1), fi.getBurgerInformation());
+            } else {
+                Burger fi = new Burger();
+                txtpri.setText("$" + (cur += fi.getPrice()));
+                menuItems.add((num - 1), fi.getBurgerInformation());
+            }
         }
-        
-        else if(cheeseb && baconb==false){
-            fi=new Cheeseburg();
-            //total = fi.getPrice();
-            txtpri.setText("$"+(cur+=fi.getPrice()));
-        }
-        
-        else if(baconb && cheeseb==false){
-            fi=new BaconBurg();
-            //total = fi.getPrice();
-            txtpri.setText("$"+(cur+=fi.getPrice()));
-        }
-        
         else{
-            fi = new burger();
-            //total = fi.getPrice();
-            txtpri.setText("$"+(cur+=fi.getPrice()));
+            //if(cheesef && chilif)
         }
-        
-        burg=false;
-        cheeseb=false;
-        baconb=false;
+
+        burg = false;
+        cheeseb = false;
+        baconb = false;
         btnbacchebur.setEnabled(false);
         btnchebur.setEnabled(false);
         btnadd.setEnabled(false);
@@ -382,11 +389,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> lstord;
     private javax.swing.JTextField txtnum;
     private javax.swing.JTextField txtpri;
     // End of variables declaration//GEN-END:variables

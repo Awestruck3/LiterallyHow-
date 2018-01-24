@@ -17,4 +17,8 @@ public class BaconCheeseBurg extends Cheeseburg{
             return price + (bacon*2);
         
     }
+    
+    public String getBurgerInformation(){
+        return "Bacon Cheese Burger bought for " + getPrice();
+    }
 }

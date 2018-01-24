@@ -19,6 +19,9 @@ public class BaconBurg extends FoodItem{
             return price + bacon;
         else
             return price + (bacon*2);
-        
+    }
+    
+     public String getBurgerInformation(){
+        return "Bacon Burger bought for " + getPrice();
     }
 }
