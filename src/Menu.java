@@ -255,7 +255,7 @@ public class Menu extends javax.swing.JFrame {
         if(canc)
             num+=1;
         else num=num;
-        
+        fry=false;
         canc=false;
         txtnum.setText(""+ num);
         burg=true;
@@ -270,7 +270,7 @@ public class Menu extends javax.swing.JFrame {
         if(canc)
             num+=1;
         else num=num;
-        
+        burg=false;
         canc=false;
         txtnum.setText(""+ num);
         fry=true;
@@ -300,30 +300,30 @@ public class Menu extends javax.swing.JFrame {
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
         canc=true;
         FoodItem fi;
-        double total=0;
         
-        if(burg == true&&cheeseb==true&&baconb==true){
+        
+        if(cheeseb && baconb){
             fi=new BaconCheeseBurg();
-            total = fi.getPrice();
-            txtpri.setText("$"+(cur+=total));
+            //total = fi.getPrice();
+            txtpri.setText("$"+(cur+=fi.getPrice()));
         }
         
-        if(burg == true&&cheeseb==true){
+        else if(cheeseb && baconb==false){
             fi=new Cheeseburg();
-            total = fi.getPrice();
-            txtpri.setText("$"+(cur+=total));
+            //total = fi.getPrice();
+            txtpri.setText("$"+(cur+=fi.getPrice()));
         }
         
-        if(burg==true && baconb==true){
+        else if(baconb && cheeseb==false){
             fi=new BaconBurg();
-            total = fi.getPrice();
-            txtpri.setText("$"+(cur+=total));
+            //total = fi.getPrice();
+            txtpri.setText("$"+(cur+=fi.getPrice()));
         }
         
-        if(burg == true){
+        else{
             fi = new burger();
-            total = fi.getPrice();
-            txtpri.setText("$"+(cur+=total));
+            //total = fi.getPrice();
+            txtpri.setText("$"+(cur+=fi.getPrice()));
         }
         
         burg=false;

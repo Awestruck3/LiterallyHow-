@@ -1,7 +1,7 @@
 
 public class Cheeseburg extends FoodItem {
     
-    double cheese;
+    double cheese=.5;
     boolean extra=false;
     
     
@@ -12,11 +12,10 @@ public class Cheeseburg extends FoodItem {
     
     @Override
     public double getPrice(){
-        cheese = 0.5;
         if(extra==false)
             return price+cheese;
         else
-            return price + (cheese*2);
+            return price += (cheese*2);
         
     }
 }
